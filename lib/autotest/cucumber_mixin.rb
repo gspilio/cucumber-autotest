@@ -4,6 +4,8 @@ require 'cucumber'
 require 'cucumber/cli/profile_loader'
 
 module Autotest::CucumberMixin
+  VERSION = '1.0.0'
+  
   def self.included(receiver)
     receiver::ALL_HOOKS.concat([:run_features, :ran_features, :red_features, :green_features])
   end
@@ -105,13 +107,16 @@ module Autotest::CucumberMixin
         $stdout.sync = old_sync
       end
       self.features_to_run = dirty_features_file.read.strip
-      self.failed_scenarios_count = 
-        self.features_to_run.split("\n").inject(0) do |count, feature|
-          count += feature.match(/((?::[0-9]+)+)$/i).captures[0].count(":") 
-        end
+      self.failed_scenarios_count = count_failed_scenarios features_to_run 
       self.tainted = true unless self.features_to_run == ''
     end
     hook :ran_features
+  end
+
+  def count_failed_scenarios(features_to_run)
+    features_to_run.split("\n").inject(0) do |count, feature|
+      count += feature.match(/((?::[0-9]+)+)$/i).captures[0].count(":") 
+    end
   end
 
   def make_cucumber_cmd(features_to_run, dirty_features_filename)

@@ -9,6 +9,7 @@ describe "cucumber_mixin" do
       end
     end
     @test_mixin_class = Class.new(@super_test_class) do
+      attr_accessor :results
       include Autotest::CucumberMixin
     end
   end
@@ -38,16 +39,8 @@ describe "cucumber_mixin" do
         end
       
         it "should count the failing scenarios" do
-          @obj.stub(:hook)
-          @obj.stub(:results=)
-          @obj.stub(:tainted=)
-          tempfile = double('tempfile')
-          tempfile.stub(:path).and_return("/foo")
-          tempfile.stub(:read).and_return("filename1:12:14:125\nfilename2:25:199")
-          Tempfile.should_receive(:open).and_yield(tempfile).ordered
-          #Tempfile.should_receive(:open).ordered
-          @obj.run_features
-          expect(@obj.failed_scenarios_count).to be(5)
+          features_to_run = "filename1:12:14:125\nfilename2:25:199"
+          expect(@obj.count_failed_scenarios features_to_run).to eql(5)
         end
       end
         
