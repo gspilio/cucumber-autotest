@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
   #Should the email stay the same or should I replace it with mine?
   s.email       = 'cukes@googlegroups.com'
   s.license     = 'MIT'
+  #Switch it with the github's repo url?
   s.homepage    = "http://cukes.info"
   s.platform    = Gem::Platform::RUBY
   s.required_ruby_version = ">= 1.9.3"
