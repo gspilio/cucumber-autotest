@@ -20,9 +20,8 @@ Gem::Specification.new do |s|
   s.required_ruby_version = ">= 1.9.3"
 
   s.add_dependency 'cucumber', "> 1.3.8"
+  s.add_dependency "ZenTest", "~> 4.6"
 
-  s.add_development_dependency "ZenTest", "~> 4.6"
-  s.add_development_dependency "rspec", "~> 2.13"
   s.add_development_dependency "debugger"
 
   s.rubygems_version = ">= 1.6.1"
