@@ -1,6 +1,5 @@
-<!--
-[![Build Status](https://secure.travis-ci.org/cucumber/cucumber.png)](http://travis-ci.org/cucumber/cucumber) [![Code Climate](https://codeclimate.com/github/cucumber/cucumber.png)](https://codeclimate.com/github/cucumber/cucumber)
--->
+[![Build Status](https://secure.travis-ci.org/gspilio/cucumber-autotest.png)](http://travis-ci.org/gspilio/cucumber-autotest)
+
 # Cucumber-autotest
 
 Cucumber-autotest is a plugin for autotest that provides integration with cucumber.
