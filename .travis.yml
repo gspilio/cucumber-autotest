@@ -2,6 +2,7 @@ branches:
   only:
     - testing
 language: ruby
+bundler_args: --without development
 rvm:
   - "1.9.3"
 script: bundle exec rspec spec
