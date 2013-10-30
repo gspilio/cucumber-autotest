@@ -55,5 +55,26 @@ To remove this message, set AUTOFEATURE=false.}
       end  
     end
   end
+  
+  context "without features dir" do
+    before :each do
+      File.stub(:directory?).with("features") {false}
+    end
+    
+    it 'does not add "cucumber" to the list of discoveries' do
+      expect(Autotest).not_to receive(:add_discovery)
+      load File.expand_path("../../../lib/autotest/discover.rb",__FILE__)
+    end
+  
+    it 'does not puts help message' do
+      expect($stdout).not_to receive(:puts).with(
+        %q{Not running features.
+To run features in autotest, set AUTOFEATURE=true.
+To remove this message, set AUTOFEATURE=false.}
+      )
+      load File.expand_path("../../../lib/autotest/discover.rb",__FILE__)
+    end  
+  end
+
 end
 
