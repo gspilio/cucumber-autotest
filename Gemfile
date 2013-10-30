@@ -1,5 +1,5 @@
 source "https://rubygems.org"
 
-gem "cucumber", :path => "~/desktop/cucumber"
+gem "cucumber", :git => "https://github.com/gspilio/cucumber.git", :branch => 'master'
 
 gemspec
